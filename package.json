@@ -1,0 +1,100 @@
+{
+  "name": "boilerplate",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "prettier": "prettier",
+    "prettify": "prettier --write",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx src",
+    "clean": "rimraf node_modules yarn.lock .parcel-cache",
+    "clean:cache": "rimraf .parcel-cache",
+    "clean:node": "rimraf node_modules",
+    "clean:no-lock": "rimraf node_modules .parcel-cache"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "prettier",
+      "prettier/react"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error",
+      "no-console": [
+        "warn",
+        {
+          "allow": [
+            "info",
+            "warn",
+            "error",
+            "dir",
+            "group",
+            "groupEnd"
+          ]
+        }
+      ]
+    }
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "endOfLine": "lf",
+    "printWidth": 100,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{css,json,md,mdx}": [
+      "yarn run prettify --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@chakra-ui/core": "^0.5.1",
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.23",
+    "deepmerge": "^4.2.2",
+    "emotion-theming": "^10.0.19",
+    "feather-icons": "^4.25.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.16",
+    "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@typescript-eslint/parser": "^2.11.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-react-app": "^5.1.0",
+    "eslint-plugin-flowtype": "^3.13.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "parcel": "^2.0.0-alpha.3.2",
+    "prettier": "^1.19.1",
+    "prop-types": "^15.7.2",
+    "rimraf": "^3.0.0",
+    "typescript": "^3.7.3"
+  }
+}
